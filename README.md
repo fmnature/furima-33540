@@ -24,12 +24,12 @@
 | ------------- | ------------- | ------------------------------ |
 | title         | string        | null: false                    |　商品名
 | text          | text          | null: false                    |　用品詳細
-| category      | string        | null: false                    |　カテゴリー
-| state         | string        | null: false                    |　商品の状態
 | price         | integer       | null: false                    |　価格
-| burden        | string        | null: false                    |　配送料負担
-| area          | string        | null: false                    |　発送元地域
-| days          | integer       | null: false                    |　発送までの日数
+| category_id   | integer       | null: false                    |　カテゴリー Active_hash
+| state_id      | integer       | null: false                    |　商品の状態 Active_hash
+| burden_id     | integer       | null: false                    |　配送料負担 Active_hash
+| area_id       | integer       | null: false                    |　発送元地域 Active_hash
+| days_id       | integer       | null: false                    |　発送までの日数 Active_hash
 | user          | references    | null: false, foreign_key: true |
 
 ### Association
@@ -54,7 +54,7 @@
 | Column        |  Type         | Options                        |
 | --------------| ------------- | ------------------------------ |
 | post_num      | string        | null: false                    |　郵便番号
-| city          | string        | null: false                    |　都道府県
+| area_id       | integer       | null: false                    |　都道府県 Active_hash
 | municipal     | string        | null: false                    |　市区町村
 | address       | integer       | null: false                    |　番地
 | build_name    | integer       |                                |　建物名
