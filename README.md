@@ -1,6 +1,6 @@
 # README
 
-## users テーブル
+## users テーブル ユーザー情報
 
 | Column             | Type   | Options     |
 | ------------------ | ------ | ----------- |
@@ -18,7 +18,7 @@
 - has_many :items
 - has_many :orders
 
-## items テーブル
+## items テーブル 商品情報
 
 | Column        | Type          | Options                        |
 | ------------- | ------------- | ------------------------------ |
@@ -30,17 +30,18 @@
 | burden_id     | integer       | null: false                    |　配送料負担 Active_hash
 | area_id       | integer       | null: false                    |　発送元地域 Active_hash
 | days_id       | integer       | null: false                    |　発送までの日数 Active_hash
-| user          | references    | null: false, foreign_key: true |
+| user          | references    | null: false, foreign_key: true |　配送者
 
 ### Association
 
 - belongs_to :user
+- has_one :order
 
-## orders テーブル
+## orders テーブル 購入記録
 
 | Column        | Type          | Options                        |
 | ------------- | ------------- | ------------------------------ |
-| user          | references    | null: false, foreign_key: true |　
+| user          | references    | null: false, foreign_key: true |　購入者
 | item          | references    | null: false, foreign_key: true |
 
 ### Association
@@ -49,14 +50,14 @@
 - belongs_to :item
 - has_one :info
 
-## infos テーブル
+## infos テーブル 住所
 
 | Column        |  Type         | Options                        |
 | --------------| ------------- | ------------------------------ |
 | post_num      | string        | null: false                    |　郵便番号
 | area_id       | integer       | null: false                    |　都道府県 Active_hash
 | municipal     | string        | null: false                    |　市区町村
-| address       | integer       | null: false                    |　番地
+| address       | string        | null: false                    |　番地
 | build_name    | integer       |                                |　建物名
 | phone_num     | string        | null: false                    |　電話番号
 | order         | references    | null: false, foreign_key: true |
