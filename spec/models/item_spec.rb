@@ -5,7 +5,7 @@ RSpec.describe Item, type: :model do
     @item = FactoryBot.build(:item)
   end
   describe "商品投稿機能のテスト" do
-    it "image, title, text, category_id, state_id, area_id, priceが空だと保存できない" do
+    it "image, title, text, category_id, state_id, area_id, priceが存在すると保存できる" do
       expect(@item).to be_valid
     end
     it "imageが空だと保存できない" do
@@ -23,25 +23,50 @@ RSpec.describe Item, type: :model do
       @item.valid?
       expect(@item.errors.full_messages).to include("Text can't be blank")
     end
+    it "category_idが空だと保存できない" do
+      @item.category_id = nil
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Category can't be blank")
+    end
     it "category_id=1だと保存できない" do
       @item.category_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include("Category must be other than 1")
+    end
+    it "state_idが空だと保存できない" do
+      @item.state_id = nil
+      @item.valid?
+      expect(@item.errors.full_messages).to include("State can't be blank")
     end
     it "state_id=1だと保存できない" do
       @item.state_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include("State must be other than 1")
     end
+    it "area_idが空だと保存できない" do
+      @item.area_id = nil
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Area can't be blank")
+    end
     it "area_id=1だと保存できない" do
       @item.area_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include("Area must be other than 1")
     end
+    it "burden_idが空だと保存できない" do
+      @item.burden_id = nil
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Burden can't be blank")
+    end
     it "burden_id=1だと保存できない" do
       @item.burden_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include("Burden must be other than 1")
+    end
+    it "days_idが空だと保存できない" do
+      @item.days_id = nil
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Days can't be blank")
     end
     it "days_id=1だと保存できない" do
       @item.days_id = 1
@@ -51,7 +76,7 @@ RSpec.describe Item, type: :model do
     it "priceが空だと保存できない" do
       @item.price = nil
       @item.valid?
-      expect(@item.errors.full_messages).to include("Price 入力値が300~9999999の範囲外です")
+      expect(@item.errors.full_messages).to include("Price can't be blank")
     end
     it "priceが300円より低いと保存できない" do
       @item.price = 200
