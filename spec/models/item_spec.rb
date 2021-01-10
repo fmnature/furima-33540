@@ -38,6 +38,16 @@ RSpec.describe Item, type: :model do
       @item.valid?
       expect(@item.errors.full_messages).to include("Area must be other than 1")
     end
+    it "burden_id=1だと保存できない" do
+      @item.burden_id = 1
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Burden must be other than 1")
+    end
+    it "days_id=1だと保存できない" do
+      @item.days_id = 1
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Days must be other than 1")
+    end
     it "priceが空だと保存できない" do
       @item.price = nil
       @item.valid?
