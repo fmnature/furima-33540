@@ -58,6 +58,16 @@ RSpec.describe Item, type: :model do
       @item.valid?
       expect(@item.errors.full_messages).to include("Price 入力値が300~9999999の範囲外です")
     end
+    it "priceは全角文字では登録できない" do
+      @item.price = "AL"
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Price 入力値が300~9999999の範囲外です")
+    end
+    it "priceは半角英数混合では登録できない" do
+      @item.price = "aaa123"
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Price 入力値が300~9999999の範囲外です")
+    end
   end
 end
 

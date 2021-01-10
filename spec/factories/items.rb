@@ -1,6 +1,5 @@
 FactoryBot.define do
   factory :item do
-    # image                 {"spec/fixtures/konoha.png"}
     title                 {"abc123"}
     text                  {"aaaaaa"}
     price                 {300}
