@@ -8,11 +8,11 @@
     </h2>
     <div class='item-img-content'>
       <%= image_tag @item.image ,class:"item-box-img" %>
-      <% if @item.order.present? %>
+      <%# if @item.order.present? %>
       <div class='sold-out'>
         <span>Sold Out!!</span>
       </div>
-      <% end %>
+      <%# end %>
     </div>
     <div class="item-price-box">
       <span class="item-price">
@@ -40,23 +40,23 @@
       <tbody>
         <tr>
           <th class="detail-item">出品者</th>
-          <td class="detail-value"><%= User.find(@item.user_id).name %></td>
+          <td class="detail-value"><%= @item.user.name %></td>
         </tr>
         <tr>
           <th class="detail-item">カテゴリー</th>
-          <td class="detail-value"><%= Genre.find(@item.category_id).name %></td>
+          <td class="detail-value"><%= @item.genre.name %></td>
         </tr>
         <tr>
           <th class="detail-item">商品の状態</th>
-          <td class="detail-value"><%= State.find(@item.state_id).name %></td>
+          <td class="detail-value"><%= @item.state.name %></td>
         </tr>
         <tr>
           <th class="detail-item">配送料の負担</th>
-          <td class="detail-value"><%= Burden.find(@item.burden_id).name %></td>
+          <td class="detail-value"><%= @item.burden.name %></td>
         </tr>
         <tr>
           <th class="detail-item">発送元の地域</th>
-          <td class="detail-value"><%= Area.find(@item.area_id).name %></td>
+          <td class="detail-value"><%= @item.area.name %></td>
         </tr>
         <tr>
           <th class="detail-item">発送日の目安</th>
