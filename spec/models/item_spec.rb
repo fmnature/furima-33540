@@ -23,13 +23,13 @@ RSpec.describe Item, type: :model do
       @item.valid?
       expect(@item.errors.full_messages).to include("Text can't be blank")
     end
-    it "genre_idが空だと保存できない" do
-      @item.genre_id = nil
+    it "category_idが空だと保存できない" do
+      @item.category_id = nil
       @item.valid?
       expect(@item.errors.full_messages).to include("Category can't be blank")
     end
-    it "genre_id=1だと保存できない" do
-      @item.genre_id = 1
+    it "category_id=1だと保存できない" do
+      @item.category_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include("Category must be other than 1")
     end
@@ -63,13 +63,13 @@ RSpec.describe Item, type: :model do
       @item.valid?
       expect(@item.errors.full_messages).to include("Burden must be other than 1")
     end
-    it "day_idが空だと保存できない" do
-      @item.day_id = nil
+    it "days_idが空だと保存できない" do
+      @item.days_id = nil
       @item.valid?
       expect(@item.errors.full_messages).to include("Days can't be blank")
     end
-    it "day_id=1だと保存できない" do
-      @item.day_id = 1
+    it "days_id=1だと保存できない" do
+      @item.days_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include("Days must be other than 1")
     end

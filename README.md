@@ -25,11 +25,11 @@
 | title         | string        | null: false                    |　商品名
 | text          | text          | null: false                    |　用品詳細
 | price         | integer       | null: false                    |　価格
-| genre_id      | integer       | null: false                    |　カテゴリー Active_hash
+| category_id   | integer       | null: false                    |　カテゴリー Active_hash
 | state_id      | integer       | null: false                    |　商品の状態 Active_hash
 | burden_id     | integer       | null: false                    |　配送料負担 Active_hash
 | area_id       | integer       | null: false                    |　発送元地域 Active_hash
-| day_id        | integer       | null: false                    |　発送までの日数 Active_hash
+| days_id       | integer       | null: false                    |　発送までの日数 Active_hash
 | user          | references    | null: false, foreign_key: true |　配送者
 
 ### Association
