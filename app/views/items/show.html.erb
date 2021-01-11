@@ -19,7 +19,7 @@
         ¥ <%= @item.price %>
       </span>
       <span class="item-postage">
-        <%= Burden.find(@item.burden_id).name %>
+        <%= @item.burden.name %>
       </span>
     </div>
 
@@ -60,7 +60,7 @@
         </tr>
         <tr>
           <th class="detail-item">発送日の目安</th>
-          <td class="detail-value"><%= Day.find(@item.days_id).name %></td>
+          <td class="detail-value"><%= @item.day.name %></td>
         </tr>
       </tbody>
     </table>
