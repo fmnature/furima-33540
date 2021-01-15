@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe OrderForm, type: :model do
   describe "商品購入機能のテスト" do
     before do
+      @user = FactoryBot.build(:user)
       @order_form = FactoryBot.build(:order_form)
     end
     it "全ての値が正しく入力されていれば保存できる" do

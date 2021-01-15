@@ -11,11 +11,9 @@ class OrderForm
     validates :token
   end
   validates :area_id,  numericality: { other_than: 1 }
-  validates :buyer_id, numericality: { only_integer: true }
-  validates :item_id,  numericality: { only_integer: true }
 
   def save 
-    Order.create(user_id: buyer_id, item_id: item_id)
-    Info.create(post_num: post_num, area_id: area_id, municipal: municipal, address: address, build_name: build_name, phone_num: phone_num, order_id: item_id)
+    order = Order.create(user_id: buyer_id, item_id: item_id)
+    Info.create(post_num: post_num, area_id: area_id, municipal: municipal, address: address, build_name: build_name, phone_num: phone_num, order_id: order.id)
   end
 end
