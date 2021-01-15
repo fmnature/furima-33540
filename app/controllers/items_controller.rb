@@ -24,8 +24,9 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
-    unless current_user.id == @item.id
-      redirect_to action: :index
+    @order = Order.find_by(item_id: @item.id)
+    if @item.order.present? || current_user.id != @item.user_id
+      redirect_to root_path
     end
   end
 
