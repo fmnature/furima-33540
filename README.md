@@ -58,7 +58,7 @@
 | area_id       | integer       | null: false                    |　都道府県 Active_hash
 | municipal     | string        | null: false                    |　市区町村
 | address       | string        | null: false                    |　番地
-| build_name    | integer       |                                |　建物名
+| build_name    | string        |                                |　建物名
 | phone_num     | string        | null: false                    |　電話番号
 | order         | references    | null: false, foreign_key: true |
 

@@ -26,12 +26,12 @@ RSpec.describe Item, type: :model do
     it "genre_idが空だと保存できない" do
       @item.genre_id = nil
       @item.valid?
-      expect(@item.errors.full_messages).to include("Category can't be blank")
+      expect(@item.errors.full_messages).to include("Genre can't be blank")
     end
     it "genre_id=1だと保存できない" do
       @item.genre_id = 1
       @item.valid?
-      expect(@item.errors.full_messages).to include("Category must be other than 1")
+      expect(@item.errors.full_messages).to include("Genre must be other than 1")
     end
     it "state_idが空だと保存できない" do
       @item.state_id = nil
@@ -66,12 +66,12 @@ RSpec.describe Item, type: :model do
     it "day_idが空だと保存できない" do
       @item.day_id = nil
       @item.valid?
-      expect(@item.errors.full_messages).to include("Days can't be blank")
+      expect(@item.errors.full_messages).to include("Day can't be blank")
     end
     it "day_id=1だと保存できない" do
       @item.day_id = 1
       @item.valid?
-      expect(@item.errors.full_messages).to include("Days must be other than 1")
+      expect(@item.errors.full_messages).to include("Day must be other than 1")
     end
     it "priceが空だと保存できない" do
       @item.price = nil

@@ -7,7 +7,7 @@ class Item < ApplicationRecord
   belongs_to :day
   belongs_to :user
   
-  has_one :order
+  has_one :order, foreign_key: :item_id, dependent: :destroy
   has_one_attached :image
 
   with_options presence: true do
