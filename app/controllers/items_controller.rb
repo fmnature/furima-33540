@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update]
+  before_action :item_find, only: [:show, :edit, :update, :destroy,]
 
   def index
     @items = Item.all.order(id: "DESC")
@@ -19,11 +20,10 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
+    
   end
 
   def edit
-    @item = Item.find(params[:id])
     @order = Order.find_by(item_id: @item.id)
     if @item.order.present? || current_user.id != @item.user_id
       redirect_to root_path
@@ -31,18 +31,15 @@ class ItemsController < ApplicationController
   end
 
   def update
-    item = Item.find(params[:id])
-    if item.update(item_params)
+    if @item.update(item_params)
       redirect_to item_path(params[:id])
     else
-      @item = Item.find(params[:id])
       render :edit
     end
   end
 
   def destroy
-    item = Item.find(params[:id])
-    item.destroy if current_user.id == item.user_id
+    @item.destroy if current_user.id == @item.user_id
     redirect_to root_path 
   end
 
@@ -50,6 +47,10 @@ class ItemsController < ApplicationController
 
   def item_params
     params.require(:item).permit(:title, :text, :genre_id, :state_id, :day_id, :burden_id, :area_id, :image, :price).merge(user_id: current_user.id)
+  end
+
+  def item_find
+    @item = Item.find(params[:id])
   end
   
 end
